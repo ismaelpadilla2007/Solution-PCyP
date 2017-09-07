@@ -41,8 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BIZ\Category.cs" />
-    <Compile Include="BIZ\Entitybiz.cs" />
+    <Compile Include="BIZ\EntityBase.cs" />
+    <Compile Include="BIZ\Instructor.cs" />
+    <Compile Include="BIZ\Student.cs" />
     <Compile Include="BLL\CategoryBusiness.cs" />
+    <Compile Include="BLL\InstructorBusiness.cs" />
+    <Compile Include="BLL\StudentBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,8 @@ namespace Domain.pcyp.BIZ
 {
     public class Category : EntityBase
     {
+        public String Name { get; set; }
+        
         public Category() //ctol
         {
             

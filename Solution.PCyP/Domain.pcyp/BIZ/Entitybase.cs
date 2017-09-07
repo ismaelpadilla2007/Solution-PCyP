@@ -10,11 +10,6 @@ namespace Domain.pcyp.BIZ
     {
 
         //prop
-        public String Name
-        {
-            get; set;
-        }
-
         public int Id
         {
             get; set;
