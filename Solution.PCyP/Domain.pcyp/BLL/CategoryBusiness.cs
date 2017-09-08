@@ -1,4 +1,5 @@
 ﻿using Domain.pcyp.BIZ;
+using Domain.pcyp.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +8,52 @@ using System.Threading.Tasks;
 
 namespace Domain.pcyp.BLL
 {
-    public static class CategoryBusiness
+    public class CategoryBusiness
     {
-        private static List<Category> _categoryList = new List<Category>();
 
-        public static void add(Category categoria)
+        private static CategoryBusiness _instance;
+        private readonly CategoryRepository db = null;
+
+        private CategoryBusiness()
         {
-            _categoryList.Add(categoria);
+            this.db = new CategoryRepository();
         }
 
-        public static List<Category> getCategoryList()
+        public static CategoryBusiness Instance
         {
-            return _categoryList;
+            get
+            {
+                if (_instance == null)
+                    _instance = new CategoryBusiness();
+                return _instance;
+            }
+        }
+
+
+
+        public void Agregar(Category categoria)
+        {
+            categoria.Id = Guid.NewGuid().ToString();
+            categoria.CreatedOn = DateTime.Now;
+            categoria.ChangedOn = DateTime.Now;
+            categoria.CreatedBy = 0;
+            categoria.ChangedBy = 0;
+
+            db.Add(categoria);
+        }
+
+        public List<Category> GetList()
+        {
+            return db.All();
+        }
+        public Category Find(Category categoria)
+        {
+            var category = db.Find(categoria);
+            return categoria;
+        }
+        public void Delete (Category categoria)
+        {
+            db.Delete(categoria);
         }
     }
-}
+    }

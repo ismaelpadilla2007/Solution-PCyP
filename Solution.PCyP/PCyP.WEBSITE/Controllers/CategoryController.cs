@@ -1,5 +1,6 @@
 ﻿using Domain.pcyp.BIZ;
 using Domain.pcyp.BLL;
+using Domain.pcyp.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,25 +11,17 @@ namespace PCyP.WEBSITE.Controllers
 {
     public class CategoryController : Controller
     {
-
-        // GET: Category
+        
+        
         public ActionResult Index()
         {
-            var vista = CategoryBusiness.getCategoryList();
-            /*var cat = new Category();
-            cat.Name = "ismael";
-            cat.ChangedOn= DateTime.Now;
-            cat.ChangedBy = 5;
-            cat.CreatedOn= DateTime.Now;
-            cat.CreatedBy = 6;
-            vista.Add(cat);*/
-            return View(vista);
+            return View (CategoryBusiness.Instance.GetList());
         }
 
-        // GET: Category/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(String id)
         {
-            return View();
+            var category = CategoryBusiness.Instance.Find(new Category { Id = id });
+            return View(category);
         }
 
         // GET: Category/Create
@@ -42,60 +35,40 @@ namespace PCyP.WEBSITE.Controllers
         [HttpPost]
         public ActionResult Create(Category model)
         {
-            try
-            {
-                // TODO: Add insert logic here
-                CategoryBusiness.add(model);        
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            CategoryBusiness.Instance.Agregar(model);
+            return Redirect("Index");
         }
 
         // GET: Category/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(String id)
         {
-            return View();
+            var category = CategoryBusiness.Instance.Find(new Category { Id = id });
+            return View(category);
+           
         }
 
         // POST: Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Category model)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            //CategoryBusiness.Edit(model);
+            return RedirectToAction("Index");
         }
 
         // GET: Category/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(String id)
         {
-            return View();
+            var category = CategoryBusiness.Instance.Find(new Category { Id = id });
+            return View(category);
+
         }
 
         // POST: Category/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Category model)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            CategoryBusiness.Instance.Delete(model);
+            return RedirectToAction("Index");
         }
     }
 }

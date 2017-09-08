@@ -20,9 +20,6 @@ namespace Domain.pcyp.BIZ
         public int HireDate { get; set; }
         public int IsFullTime { get; set; }
         public double Salary { get; set; }
-        public int TotalCourses { get; set; }
-        public String ExternalId { get; set; }
-        public int MyProperty { get; set; }
         public DateTime DeleteOn { get; set; }
         public int DeleteBy { get; set; }
         public int IsDelete { get; set; }

@@ -12,16 +12,14 @@ namespace Domain.pcyp.BIZ
         {
 
         }
+        public Country country { get; set; }
         public String Alias { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
         public String Email { get; set; }
         public String City { get; set; }
-        public int CountryId { get; set; }
-        public int CountrySort { get; set; }
         public int DateOfBirth { get; set; }
         public String Gender { get; set; }
-        public int TotalEnrollments { get; set; }
 
     }
 }

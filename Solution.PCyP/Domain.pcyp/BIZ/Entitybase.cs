@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.pcyp.BIZ
-{   
+{
     public class EntityBase
     {
 
         //prop
-        public int Id
+        public string Id
         {
             get; set;
         }
